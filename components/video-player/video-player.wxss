@@ -7,6 +7,7 @@
   height: 10.67vw;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.4);
+  overflow: visible;
 }
 
 .icon-img {
@@ -16,6 +17,18 @@
   width: 6.4vw;
   height: 6.4vw;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.icon-text {
+  position: absolute;
+  left: 50%;
+  bottom: -4.5vw;
+  width: 15vw;
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  transform: translateX(-50%);
+  text-shadow: 2px 0px 7px rgba(0, 0, 0, 0.37);
 }
 
 .-kivi-video {

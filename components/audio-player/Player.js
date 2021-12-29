@@ -1,8 +1,9 @@
+import { resUrl } from "../../utils/util";
+
 class Player {
   constructor() {
     this.innerAudioContext = wx.createInnerAudioContext();
-    this.innerAudioContext.src =
-      "https://kivicube-resource.kivisense.com/projects/wx-slam-test-assets/media/bgm.mp3";
+    this.innerAudioContext.src = resUrl("media/bgm.mp3");
     this.innerAudioContext.loop = true;
     this.type = "pause";
   }

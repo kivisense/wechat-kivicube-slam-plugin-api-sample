@@ -1,11 +1,6 @@
 Component({
-  properties: {},
   data: {
     showLoading: false,
-  },
-  lifetimes: {
-    async attached() {},
-    async detached() {},
   },
   methods: {
     show() {

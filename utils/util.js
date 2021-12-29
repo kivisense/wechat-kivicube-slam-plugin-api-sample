@@ -1,3 +1,7 @@
+export function resUrl(filename) {
+  return `https://kivicube-resource.kivisense.com/projects/wechat-kivicube-slam-plugin-api-sample-assets/${filename}`;
+}
+
 export function errorHandler(errInfo) {
   let message = errInfo;
   if (typeof errInfo === "object") {

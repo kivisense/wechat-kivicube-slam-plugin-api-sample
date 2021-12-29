@@ -1,4 +1,4 @@
-import { requestFile, downloadFile } from "../../utils/util";
+import { requestFile, downloadFile, resUrl } from "../../utils/util";
 
 class Food {
   constructor() {}
@@ -14,18 +14,10 @@ class Food {
     }
 
     this.downloadAssets = Promise.all([
-      requestFile(
-        "https://kivicube-resource.kivisense.com/projects/wx-slam-test-assets/models/beef.glb"
-      ),
-      requestFile(
-        "https://kivicube-resource.kivisense.com/wechat-kivicube-slam-plugin-api-demo/default.hdr"
-      ),
-      downloadFile(
-        "https://kivicube-resource.kivisense.com/projects/wx-slam-test-assets/models/point.mp4"
-      ),
-      downloadFile(
-        "https://kivicube-resource.kivisense.com/projects/wx-slam-test-assets/models/fire.mp4"
-      ),
+      requestFile(resUrl("models/beef.glb")),
+      requestFile(resUrl("hdr/default.hdr")),
+      downloadFile(resUrl("models/point.mp4")),
+      downloadFile(resUrl("models/fire.mp4")),
     ]);
 
     return this.downloadAssets;

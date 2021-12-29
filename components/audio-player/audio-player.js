@@ -1,6 +1,7 @@
+import Player from "./Player";
+
 const defaultIcon = "/static/images/default-audio.png";
 const pauseIcon = "/static/images/pause-audio.png";
-import Player from "./Player";
 
 Component({
   properties: {},
@@ -9,16 +10,16 @@ Component({
   },
   lifetimes: {
     async attached() {
-      this.Player = new Player();
+      this.player = new Player();
     },
     async detached() {
-      this.Player.destroy();
-      this.Player = null;
+      this.player.destroy();
+      this.player = null;
     },
   },
   methods: {
     touch() {
-      const type = this.Player.getType();
+      const type = this.player.getType();
       if (type === "play") {
         this.pause();
       } else {
@@ -29,14 +30,14 @@ Component({
       this.setData({
         icon: defaultIcon,
       });
-      this.Player.play();
+      this.player.play();
       this.triggerEvent("play");
     },
     pause() {
       this.setData({
         icon: pauseIcon,
       });
-      this.Player.pause();
+      this.player.pause();
       this.triggerEvent("pause");
     },
   },

@@ -1,5 +1,6 @@
 <view class="-kivi-dim player-btn-layout" bind:tap="play">
   <image class="icon-img" src="/static/images/video.png" mode="widthFix" lazy-load="false" />
+  <view class="icon-text">制作方法</view>
 </view>
 
 <view class="-kivi-dim player-btn-layout video-close" hidden="{{!showVideo}}" bind:tap="stop">

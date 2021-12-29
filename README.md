@@ -1,7 +1,6 @@
 # wechat-kivicube-slam-plugin-api-sample
 
-> 描述：此项目是基于 **kivicube-slam** 插件 开发的示例小程序。
-> 项目大量使用了文档中提供的api，给开发者展示了一个比较完整的开发示例和开发流程。
+> 描述：此项目是基于 **[kivicube-slam](https://github.com/kivisense/wechat-kivicube-slam-plugin-api-demo)** 插件 开发的示例小程序。给开发者提供了一个比较完整的示例和流程。
 
 
 ---
@@ -25,18 +24,6 @@
 ├── utils                         // 一些工具方法
 </pre>
 
-## 流程简介
-**slam项目基础流程图如下所示**
-```mermaid
-graph LR
-A[开始] --> B{是否允许相机权限}
-    B --> |否| A
-    B --> |是| C(初始化slam)
-    C --> C1(下载文件)
-    C1 --> C2(设置3d对象基本数据)
-    C2 --> C3(将3d对象加入到平面中)
-
-```
 ## 快速体验
 
 1. 使用git克隆此仓库至本地，可使用命令git clone git@github.com:kivisense/wechat-kivicube-slam-plugin-api-sample.git，或者点击右上角按钮Code -> Download ZIP下载代码。

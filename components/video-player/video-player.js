@@ -1,6 +1,7 @@
 // components/video-player/video-player.js
+import { resUrl } from "../../utils/util";
+
 Component({
-  properties: {},
   lifetimes: {
     async attached() {
       this.videoContext = wx.createVideoContext("kivi-video", this);
@@ -12,8 +13,7 @@ Component({
   },
   data: {
     showVideo: false,
-    videoPath:
-      "https://kivicube-resource.kivisense.com/projects/wx-slam-test-assets/media/movie.mp4",
+    videoPath: resUrl("media/movie.mp4"),
   },
   methods: {
     play() {

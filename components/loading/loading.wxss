@@ -1,31 +1,48 @@
 .-kivi-loading-layout {
-  width: 100vw;
-  height: 100vh;
   position: fixed;
   left: 0;
   top: 0;
   z-index: 9999;
-  background-color: rgba(255, 255, 255, 0.6);
+  width: 100vw;
+  height: 100vh;
+  background-color: #0A001E;
 }
 
 .-kivi-loading-content {
   position: absolute;
   left: 0;
-  top: 30%;
+  top: 50%;
   width: 100%;
+  transform: translateY(-50%);
+}
+
+.-kivi-loading-content-img {
+  display: block;
+  width: 69.87vw;
+  height: 44.8vw;
+  margin: 0 auto;
+}
+
+
+.-kivi-loading-footer {
+  position: absolute;
+  bottom: 10vw;
+  color: #fff;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .-kivi-loading-icon {
   display: block;
-  width: 50vw;
-  height: 51.96vw;
+  width: 31.73vw;
+  height: 9.07vw;
   margin: 0 auto;
 }
 
 .-kivi-loading-text {
-  margin-top: 5vw;
-  color: #000000;
+  margin-top: 1.05vw;
   text-align: center;
-  font-size: 4.27vw;
-  line-height: 5.87vw;
+  font-size: 3.2vw;
+  line-height: 4.53vw;
+  letter-spacing: 2px;
 }
