@@ -1,0 +1,16 @@
+<view class="-kivi-dim player-btn-layout" bind:tap="play">
+  <image class="icon-img" src="/static/images/video.png" mode="widthFix" lazy-load="false" />
+</view>
+
+<view class="-kivi-dim player-btn-layout video-close" hidden="{{!showVideo}}" bind:tap="stop">
+  <image class="icon-img" src="/static/images/close.png" mode="widthFix" lazy-load="false" />
+</view>
+
+<video id="kivi-video"
+  class="layer -kivi-video {{ showVideo ? '' : 'hidden'}}"
+  src="{{videoPath}}" loop
+  object-fit="cover"
+  controls="{{false}}"
+  show-play-btn="{{false}}"
+  show-center-play-btn="{{false}}"
+/>

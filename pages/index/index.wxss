@@ -1,0 +1,90 @@
+.slam {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+.scan-box {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+}
+
+.scan-box .scan-img {
+  width: 46.93vw;
+  height: 18.67vw;
+}
+
+.scan-box .scan-txt {
+  margin-top: 2.93vw;
+  line-height: 6.4vw;
+  font-size: 4.53vw;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+.find-plane-tip {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  z-index: 1;
+
+  width: 85.6vw;
+  height: 9.07vw;
+  line-height: 9.07vw;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 2px 0px 7px rgba(0, 0, 0, 0.37);
+}
+
+.food-card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14.13vw;
+  z-index: 3;
+  margin: 0 auto;
+}
+
+.-kivi-chef-box {
+  position: absolute;
+  left: 0;
+  top: 20%;
+  z-index: 1;
+}
+
+.-kivi-chef-box .chef-img {
+  position: absolute;
+  left: -12.26vw;
+  top: 0;
+  width: 37.33vw;
+  height: 37.33vw;
+}
+
+.-kivi-chef-box .chef-text {
+  position: absolute;
+  top: 16.77vw;
+  left: 12.8vw;
+  width: 30.93vw;
+  height: 13.87vw;
+}
+
+.-kivi-btn-box {
+  position: absolute;
+  top: 21%;
+  right: 4.8vw;
+}
+
+.audio-player {
+  display: block;
+  margin-bottom: 4vw;
+}
+
+.video-player {
+  position: relative;
+  z-index: 2;
+}

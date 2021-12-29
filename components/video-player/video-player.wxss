@@ -1,0 +1,38 @@
+/* components/video-player/video-player.wxss */
+@import "../../app.wxss";
+
+.player-btn-layout {
+  position: relative;
+  width: 10.67vw;
+  height: 10.67vw;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.icon-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6.4vw;
+  height: 6.4vw;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.-kivi-video {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+}
+
+.video-close {
+  position: fixed;
+  top: 15%;
+  right: 4.8vw;
+  z-index: 2;
+}
+
+.hidden {
+  left: -1000%;
+}

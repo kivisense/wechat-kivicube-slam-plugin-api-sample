@@ -1,0 +1,19 @@
+/* components/audio-player/audio-player.wxss */
+@import "../../app.wxss";
+
+.player-btn-layout {
+  position: relative;
+  width: 10.67vw;
+  height: 10.67vw;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.icon-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6.4vw;
+  height: 6.4vw;
+  transform: translateX(-50%) translateY(-50%);
+}

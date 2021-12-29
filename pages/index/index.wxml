@@ -1,0 +1,22 @@
+<kivicube-slam wx:if="{{showSlam}}" class="slam -kivi-dim" license="{{license}}" bind:tap="startScene" bindready="ready" binderror="error" />
+
+<view class="scan-box animated fadeIn" wx:if="{{step === 'findPlane'}}">
+  <image class="scan-img" src="https://kivicube-resource.kivisense.com/projects/wx-slam-test-assets/images/scaning.png" mode="widthFix" lazy-load="false" />
+  <view class="scan-txt">请寻找一个平面</view>
+</view>
+
+<view class="find-plane-tip animated fadeIn" wx:if="{{step === 'showPoint'}}">选择最佳位置，点击屏幕放置菜品</view>
+
+<view class="-kivi-chef-box" wx:if="{{ step === 'startScene' }}">
+  <image class="chef-img animated fadeInLeft" src="/static/images/chef.png" mode="widthFix" lazy-load="false" />
+  <image class="chef-text animated jackInTheBox delay-1s" src="/static/images/text.png" mode="widthFix" lazy-load="false" />
+</view>
+
+<food-card class="food-card animated fadeInUp" wx:if="{{ step === 'startScene' }}" detail="{{detail}}" />
+
+<view class="-kivi-btn-box" wx:if="{{ step === 'startScene' }}">
+  <audio-player id="audioPlayer" class="audio-player" />
+  <video-player id="videoPlayer" bind:play="playVideo" bind:close="closeVideo" class="video-player" />
+</view>
+
+<Loading id="loading" />

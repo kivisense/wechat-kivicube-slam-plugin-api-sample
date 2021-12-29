@@ -1,0 +1,13 @@
+<view class="-kivi-card-layout -kivi-dim">
+  <view class="-kivi-card-content -kivi-dim">
+    <image class="card-img" src="{{ detail.img }}" mode="aspectFit" lazy-load="false" />
+
+    <view class="card-desc">
+      <view class="card-title">{{detail.title}}</view>
+      <view class="card-price">¥{{ detail.price }}元/份</view>
+    </view>
+
+  </view>
+
+  <view class="-kivi-card-btn" bind:tap="buyNow">立即下单</view>
+</view>

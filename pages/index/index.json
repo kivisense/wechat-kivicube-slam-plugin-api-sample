@@ -1,0 +1,11 @@
+{
+  "disableScroll": true,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "kivicube-slam": "plugin://kivicube-slam/kivicube-slam",
+    "Loading": "../../components/loading/loading",
+    "food-card": "../../components/card/card",
+    "audio-player": "../../components/audio-player/audio-player",
+    "video-player": "../../components/video-player/video-player"
+  }
+}

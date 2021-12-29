@@ -1,0 +1,4 @@
+<view class="-kivi-dim player-btn-layout">
+  <image class="icon-img" src="{{icon}}" mode="widthFix" lazy-load="false" bind:tap="touch"  />
+</view>
+  

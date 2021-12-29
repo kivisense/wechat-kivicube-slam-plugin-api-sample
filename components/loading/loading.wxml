@@ -1,0 +1,6 @@
+<view wx:if="{{showLoading}}" class="-kivi-loading-layout">
+  <view class="-kivi-loading-content">
+    <image class="-kivi-loading-icon" src="https://kivicube-resource.kivisense.com/projects/wx-slam-test-assets/images/loading.png" mode="widthFix" />
+    <view class="-kivi-loading-text">牛排制作中，请稍后...</view>
+  </view>
+</view>

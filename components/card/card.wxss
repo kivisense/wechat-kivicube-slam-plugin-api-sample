@@ -1,0 +1,58 @@
+.-kivi-dim {
+  backdrop-filter: blur(5px);
+}
+
+.-kivi-card-layout {
+  display: flex;
+  margin: 0 auto;
+  width: 77.33vw;
+  height: 15.73vw;
+  border-radius: 7.87vw;
+  color: #fff;
+  /* background-color: #ccc; */
+  overflow: hidden;
+}
+
+.-kivi-card-layout .-kivi-card-content {
+  display: flex;
+  align-items: center;
+
+  width: 48.93vw;
+  padding: 0 2.4vw;
+  background-color: rgba(204, 204, 204, 0.5);
+}
+
+.card-img {
+  width: 10.93vw;
+  height: 10.93vw;
+  border-radius: 50%;
+  overflow: hidden;
+  /* background-color: #000; */
+}
+
+.card-desc {
+  margin-left: 2.4vw;
+}
+
+.card-title {
+  font-size: 4.27vw;
+  font-weight: 500;
+  line-height: 5.87vw;
+}
+
+.card-price {
+  font-size: 3.2vw;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 4.53vw;
+}
+
+.-kivi-card-btn {
+  width: 28.4vw;
+  font-size: 4.8vw;
+  line-height: 15.73vw;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #FF4141;
+}
