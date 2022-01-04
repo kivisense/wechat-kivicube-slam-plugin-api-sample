@@ -1,6 +1,6 @@
 # wechat-kivicube-slam-plugin-api-sample
 
-> 描述：此项目是基于 **[kivicube-slam](https://github.com/kivisense/wechat-kivicube-slam-plugin-api-demo)** 插件 开发的示例小程序。给开发者提供了一个比较完整的示例和流程。
+> 描述：此项目是基于 **[kivicube-slam](https://mp.weixin.qq.com/wxopen/plugindevdoc?appid=wx12ad8a61f049ea02&token=561137318&lang=zh_CN)** 插件 开发的示例小程序。给开发者提供了一个比较完整的示例和流程。
 
 
 ---
