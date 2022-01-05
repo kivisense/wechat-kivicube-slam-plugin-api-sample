@@ -6,7 +6,7 @@ const steps = ["findPlane", "showPoint", "startScene"]; // 一些UI限制的步�
 Page({
   data: {
     showSlam: false,
-    // 使用 kivicube-slam 组件需要申请license
+    // 去除水印需要申请license，见 README.md
     license:
       "ad51dc82b4846b28943338eeaac37f560345bbdba05a91a7aa5da0768d87ca5fea23cbbf1a4772785d92c7d2baaf0b88f373a0dd9c4a1c8bd8184a2f53bd59e0",
     scanImg: resUrl("images/scaning.png"),
