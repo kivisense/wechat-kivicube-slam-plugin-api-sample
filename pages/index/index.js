@@ -112,4 +112,12 @@ Page({
       errorHandler(detail);
     }
   },
+
+  onShareAppMessage() {
+    return {
+      title: "即刻体验2022微信公开课餐饮AR演示",
+      path: "pages/index/index",
+      imageUrl: resUrl("images/share.jpg"),
+    };
+  }
 });
