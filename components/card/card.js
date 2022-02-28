@@ -1,4 +1,6 @@
 // components/card/card.js
+import { stats } from "../../utils/stats";
+
 Component({
   properties: {
     detail: {
@@ -21,6 +23,8 @@ Component({
         fail: () => {},
         complete: () => {},
       });
+
+      stats("ar_click_orderNow");
     },
   },
 });

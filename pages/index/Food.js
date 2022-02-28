@@ -1,4 +1,5 @@
 import { requestFile, downloadFile, resUrl } from "../../utils/util";
+import { getTimeLevel } from "../../utils/stats";
 
 class Food {
   constructor() {}
@@ -12,13 +13,17 @@ class Food {
     if (this.downloadAssets) {
       return this.downloadAssets;
     }
+    const downloadStartTime = Date.now();
 
     this.downloadAssets = Promise.all([
       requestFile(resUrl("models/beef.glb")),
       requestFile(resUrl("hdr/default.hdr")),
       downloadFile(resUrl("models/point.mp4")),
       downloadFile(resUrl("models/fire.mp4")),
-    ]);
+    ]).then((res) => {
+      this.assetDownloadDuration = getTimeLevel(downloadStartTime); // 统计下载持续时间
+      return res;
+    });
 
     return this.downloadAssets;
   }
@@ -38,15 +43,18 @@ class Food {
         fireAlphaVideoPath,
       ] = await this.loadAssets();
 
+      const modelLoadStartTime = Date.now();
+
       // 当视频因为特殊原因不能显示时，会使用此处指定的缩略图展示。为空则降级缩略图功能无效。
       const defaultThumbnailUrl = "";
-
       const [beef, envMap, indicatorModel, fireModel] = await Promise.all([
         slam.createGltfModel(modelArrayBuffer),
         slam.createEnvMapByHDR(envMapArrayBuffer),
         slam.createAlphaVideo(planeAlphaVideoPath, defaultThumbnailUrl),
         slam.createAlphaVideo(fireAlphaVideoPath, defaultThumbnailUrl),
       ]);
+
+      const assetLoadDuration = getTimeLevel(modelLoadStartTime);
 
       // 模型使用上环境贴图，可加强真实效果。实物类模型推荐使用。
       beef.useEnvMap(envMap);
@@ -95,6 +103,11 @@ class Food {
       await slam.start();
 
       this.slam = slam;
+
+      return {
+        assetDownloadDuration: this.assetDownloadDuration,
+        assetLoadDuration,
+      };
     } catch (e) {
       throw new Error(e.message);
     }

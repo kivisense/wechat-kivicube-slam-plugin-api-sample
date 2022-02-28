@@ -1,0 +1,25 @@
+{
+  "name": "wechat-kivicube-slam-plugin-api-sample",
+  "version": "1.0.0",
+  "description": "此项目是基于 kivicube-slam 插件开发的示例小程序。给开发者提供了一个比较完整的示例和流程。",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kivisense/wechat-kivicube-slam-plugin-api-sample.git"
+  },
+  "keywords": [
+    "slam"
+  ],
+  "author": "bingo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kivisense/wechat-kivicube-slam-plugin-api-sample/issues"
+  },
+  "homepage": "https://github.com/kivisense/wechat-kivicube-slam-plugin-api-sample#readme",
+  "dependencies": {
+    "umtrack-wx": "^2.7.1"
+  }
+}

@@ -1,4 +1,5 @@
 import { errorHandler, showAuthModal, getCameraAuth, resUrl } from "../../utils/util";
+import { stats, getTimeLevel } from "../../utils/stats";
 import Food from "./Food";
 
 const steps = ["findPlane", "showPoint", "startScene"]; // 一些UI限制的步骤
@@ -38,6 +39,9 @@ Page({
     // 提前下载素材
     this.food.loadAssets();
 
+    // 此处是埋点
+    this.startInitTime = Date.now();
+    stats("loading_start");
   },
 
   onUnload() {
@@ -52,10 +56,13 @@ Page({
   async ready({ detail: slam }) {
     try {
       // 初始化场景
-      await this.food.initScene(slam);
+      const loadingTime = await this.food.initScene(slam);
 
       this.findPlane();
       this.loading.hidden();
+
+      stats("ar_start", { ...loadingTime, loadingDuration: getTimeLevel(this.startInitTime) });
+      this.readyTime = Date.now();
     } catch (e) {
       this.loading.hidden();
       errorHandler(e);
@@ -82,15 +89,16 @@ Page({
       this.setData({ step: "" });
 
       setTimeout(() => {
-
         this.setData({ step: steps[2] });
 
         wx.nextTick(() => {
           this.audioPlayer = this.selectComponent("#audioPlayer");
           this.videoPlayer = this.selectComponent("#videoPlayer");
           this.audioPlayer.play();
-        })
+        });
       }, 2000);
+
+      stats("ar_show_arScene", { arAnchorDuration: getTimeLevel(this.readyTime) });
     } catch (err) {
       wx.showToast({ title: "放置模型失败，请对准平面", icon: "none" });
     }
@@ -119,5 +127,5 @@ Page({
       path: "pages/index/index",
       imageUrl: resUrl("images/share.jpg"),
     };
-  }
+  },
 });

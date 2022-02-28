@@ -1,5 +1,6 @@
 // components/video-player/video-player.js
 import { resUrl } from "../../utils/util";
+import { stats } from "../../utils/stats";
 
 Component({
   lifetimes: {
@@ -20,6 +21,8 @@ Component({
       this.setData({ showVideo: true });
       this.videoContext.play();
       this.triggerEvent("play");
+
+      stats("ar_click_videoPlay");
     },
     stop() {
       this.setData({ showVideo: false });
