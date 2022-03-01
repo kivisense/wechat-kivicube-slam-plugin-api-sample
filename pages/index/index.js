@@ -1,4 +1,4 @@
-import { errorHandler, showAuthModal, getCameraAuth, resUrl } from "../../utils/util";
+import { errorHandler, showAuthModal, getCameraAuth, resUrl, getSlamV2Support } from "../../utils/util";
 import { stats, getTimeLevel } from "../../utils/stats";
 import Food from "./Food";
 
@@ -12,6 +12,7 @@ Page({
       "ad51dc82b4846b28943338eeaac37f560345bbdba05a91a7aa5da0768d87ca5fea23cbbf1a4772785d92c7d2baaf0b88f373a0dd9c4a1c8bd8184a2f53bd59e0",
     scanImg: resUrl("images/scaning.png"),
     step: "",
+    version: "v1",
 
     detail: {
       img: "/static/images/beef.png",
@@ -19,8 +20,12 @@ Page({
       price: 138,
     },
   },
-
   async onLoad() {
+    const isSupportV2 = getSlamV2Support();
+    if(isSupportV2) {
+      this.setData({version: "v2"});
+    }
+
     this.loading = this.selectComponent("#loading");
 
     this.loading.show();
@@ -57,6 +62,7 @@ Page({
     try {
       // 初始化场景
       const loadingTime = await this.food.initScene(slam);
+      // console.warn("isSlamV2", this.food.slam.isSlamV2())
 
       this.findPlane();
       this.loading.hidden();

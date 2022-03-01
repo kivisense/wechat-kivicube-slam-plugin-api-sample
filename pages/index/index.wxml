@@ -1,4 +1,4 @@
-<kivicube-slam wx:if="{{showSlam}}" class="slam -kivi-dim" license="{{license}}" bind:tap="startScene" bindready="ready" binderror="error" />
+<kivicube-slam wx:if="{{showSlam}}" class="slam -kivi-dim" version="{{version}}" license="{{license}}" bind:tap="startScene" bindready="ready" binderror="error" />
 
 <view class="scan-box animated fadeIn" wx:if="{{step === 'findPlane'}}">
   <image class="scan-img" src="{{scanImg}}" mode="widthFix" lazy-load="false" />

@@ -74,7 +74,8 @@ class Food {
       group.add(beef);
       group.add(fireModel);
 
-      const initScale = 0.75; // 0.5米
+      // v2版本放置到空间中的模型大小更精准，这里需要做下处理
+      const initScale = slam.isSlamV2() ? 0.23 : 0.75;
       const initRotation = 0; // 角度
       /**
        * 将创建好的3D对象，放入组件之中显示。
@@ -95,7 +96,8 @@ class Food {
       // 增加指示器
       indicatorModel.name = "indicatorModel";
       indicatorModel.loop = true; // 设置为循环播放
-      indicatorModel.scale.setScalar(0.25);
+      const indicatorScale = slam.isSlamV2() ? 0.075 : 0.25;
+      indicatorModel.scale.setScalar(indicatorScale);
       indicatorModel.rotation.x = Math.PI / 2;
       this.indicatorModel = indicatorModel;
 
@@ -123,11 +125,11 @@ class Food {
     slam.addPlaneIndicator(indicatorModel, {
       // camera画面中心，可以映射到平面上某一个点时调用
       onPlaneShow() {
-        console.log("指示器出现");
+        // console.log("指示器出现");
       },
       // camera画面中心，**不可以**映射到平面上某一个点时调用。
       onPlaneHide() {
-        console.log("指示器隐藏");
+        // console.log("指示器隐藏");
       },
       // camera画面中心，可以映射到平面上某一个点时，**持续**调用。
       // 因此可以用此方法，让指示器旋转起来。

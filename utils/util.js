@@ -107,3 +107,39 @@ export function getCameraAuth() {
     });
   });
 }
+
+export function compareVersion(v1, v2) {
+  v1 = v1.split('.')
+  v2 = v2.split('.')
+  var len = Math.max(v1.length, v2.length)
+
+  while (v1.length < len) {
+    v1.push('0')
+  }
+  while (v2.length < len) {
+    v2.push('0')
+  }
+
+  for (var i = 0; i < len; i++) {
+    var num1 = parseInt(v1[i])
+    var num2 = parseInt(v2[i])
+
+    if (num1 > num2) {
+      return 1
+    } else if (num1 < num2) {
+      return -1
+    }
+  }
+  return 0
+}
+
+export function getSlamV2Support() {
+  // 注意：目前只有iOS设备，微信版本>=8.0.17且基础库>=2.22.0才支持v2版本。 插件版本>=1.3.0支持
+  console.warn(wx.getSystemInfoSync())
+  const {system, SDKVersion, version} = wx.getSystemInfoSync();
+  const isIos = system.toLowerCase().includes("ios");
+  if(isIos && compareVersion(version, "8.0.17") >= 0 && compareVersion(SDKVersion, "2.22.0") >= 0) {
+    return true;
+  }
+  return false;
+}
