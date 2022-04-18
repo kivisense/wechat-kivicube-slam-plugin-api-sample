@@ -79,10 +79,18 @@ Page({
   findPlane() {
     this.setData({ step: steps[0] });
 
-    setTimeout(() => {
-      this.setData({ step: steps[1] });
-      this.food.findPlane();
-    }, 3000);
+    if (this.data.version === "v1") {
+      setTimeout(() => {
+        this.setData({ step: steps[1] });
+        this.food.findPlane();
+      }, 3000);
+    }
+  },
+
+  // v2模式下有平面新增
+  addAnchors() {
+    this.setData({ step: steps[1] });
+    this.food.findPlane();
   },
 
   // 开始场景展示
