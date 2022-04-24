@@ -20,6 +20,7 @@ class Food {
       requestFile(resUrl("hdr/default.hdr")),
       downloadFile(resUrl("models/point.mp4")),
       downloadFile(resUrl("models/fire.mp4")),
+      requestFile("https://kivicube-resource.kivisense.com/slam-ar/reticle.glb"),
     ]).then((res) => {
       this.assetDownloadDuration = getTimeLevel(downloadStartTime); // 统计下载持续时间
       return res;
@@ -41,17 +42,19 @@ class Food {
         envMapArrayBuffer,
         planeAlphaVideoPath,
         fireAlphaVideoPath,
+        reticleArrayBuffer,
       ] = await this.loadAssets();
 
       const modelLoadStartTime = Date.now();
 
       // 当视频因为特殊原因不能显示时，会使用此处指定的缩略图展示。为空则降级缩略图功能无效。
       const defaultThumbnailUrl = "";
-      const [beef, envMap, indicatorModel, fireModel] = await Promise.all([
+      const [beef, envMap, indicatorModel, fireModel, indicatorModel2] = await Promise.all([
         slam.createGltfModel(modelArrayBuffer),
         slam.createEnvMapByHDR(envMapArrayBuffer),
         slam.createAlphaVideo(planeAlphaVideoPath, defaultThumbnailUrl),
         slam.createAlphaVideo(fireAlphaVideoPath, defaultThumbnailUrl),
+        slam.createGltfModel(reticleArrayBuffer),
       ]);
 
       const assetLoadDuration = getTimeLevel(modelLoadStartTime);
@@ -98,8 +101,18 @@ class Food {
       indicatorModel.loop = true; // 设置为循环播放
       const indicatorScale = slam.isSlamV2() ? 0.075 : 0.25;
       indicatorModel.scale.setScalar(indicatorScale);
+
+      /**
+       * 此指示器模型使用的是透明视频模型，
+       * 透明视频模型默认是垂直于Z轴，所以需要旋转为平方状态
+       * **/
       indicatorModel.rotation.x = Math.PI / 2;
-      this.indicatorModel = indicatorModel;
+
+      // 由于slam放置时内部会改变模型的旋转，所以这里使用一个父级group进行包裹
+      const indicatorGroup = slam.createGroup();
+      indicatorGroup.add(indicatorModel);
+
+      this.indicatorModel = indicatorGroup;
 
       slam.enableShadow(); // 开启阴影功能
       await slam.start();
@@ -136,7 +149,7 @@ class Food {
       onPlaneShowing() {},
     });
 
-    indicatorModel.videoContext.play();
+    // indicatorModel.videoContext.play();
     indicatorModel.visible = true;
   }
 
@@ -172,7 +185,7 @@ class Food {
       throw new Error("find plane failed");
     }
 
-    indicatorModel.videoContext.stop();
+    // indicatorModel.videoContext.stop();
     slam.removePlaneIndicator(); // 移除指示器
 
     model.visible = true;
