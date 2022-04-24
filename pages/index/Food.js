@@ -20,7 +20,6 @@ class Food {
       requestFile(resUrl("hdr/default.hdr")),
       downloadFile(resUrl("models/point.mp4")),
       downloadFile(resUrl("models/fire.mp4")),
-      requestFile("https://kivicube-resource.kivisense.com/slam-ar/reticle.glb"),
     ]).then((res) => {
       this.assetDownloadDuration = getTimeLevel(downloadStartTime); // 统计下载持续时间
       return res;
@@ -42,19 +41,17 @@ class Food {
         envMapArrayBuffer,
         planeAlphaVideoPath,
         fireAlphaVideoPath,
-        reticleArrayBuffer,
       ] = await this.loadAssets();
 
       const modelLoadStartTime = Date.now();
 
       // 当视频因为特殊原因不能显示时，会使用此处指定的缩略图展示。为空则降级缩略图功能无效。
       const defaultThumbnailUrl = "";
-      const [beef, envMap, indicatorModel, fireModel, indicatorModel2] = await Promise.all([
+      const [beef, envMap, indicatorModel, fireModel] = await Promise.all([
         slam.createGltfModel(modelArrayBuffer),
         slam.createEnvMapByHDR(envMapArrayBuffer),
         slam.createAlphaVideo(planeAlphaVideoPath, defaultThumbnailUrl),
         slam.createAlphaVideo(fireAlphaVideoPath, defaultThumbnailUrl),
-        slam.createGltfModel(reticleArrayBuffer),
       ]);
 
       const assetLoadDuration = getTimeLevel(modelLoadStartTime);
