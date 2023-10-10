@@ -7,7 +7,7 @@
       >》。如你同意《{{privacyContractName}}》，请点击“同意”开始使用。
     </view>
     <view class="btns">
-      <button id="btn-disagree" class="item reject" bind:tap="handleDisagree">拒绝</button>
+      <!-- <button id="btn-disagree" class="item reject" bind:tap="handleDisagree">拒绝</button> -->
       <button
         id="agree-btn"
         class="item agree"

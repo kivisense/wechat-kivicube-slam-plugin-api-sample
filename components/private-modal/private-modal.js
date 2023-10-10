@@ -31,7 +31,7 @@ Component({
   },
   data: {
     innerShow: false,
-    privacyContractName: "AR动态壁画小程序隐私保护指引",
+    privacyContractName: "AR空间定位示例小程序隐私保护指引",
   },
   lifetimes: {
     attached() {
