@@ -1,4 +1,4 @@
-import { errorHandler, showAuthModal, getCameraAuth, resUrl, getSlamV2Support } from "../../utils/util";
+import { errorHandler, showAuthModal, getCameraAuth, resUrl, getSlamV2Support, getPrivate } from "../../utils/util";
 import { stats, getTimeLevel } from "../../utils/stats";
 import Food from "./Food";
 
@@ -21,32 +21,38 @@ Page({
     },
   },
   async onLoad() {
-    const isSupportV2 = getSlamV2Support();
-    if(isSupportV2) {
-      this.setData({version: "v2"});
+    try {
+      const isSupportV2 = getSlamV2Support();
+      if(isSupportV2) {
+        this.setData({version: "v2"});
+      }
+  
+      this.loading = this.selectComponent("#loading");
+  
+      this.loading.show();
+  
+      await getPrivate(); // 隐私权限判定
+  
+      // 此处使用会获取摄像头的权限，直到同意后才会初始化slam以免摄像头报错导致无法初始化。
+      await getCameraAuth();
+  
+      this.setData({ showSlam: true });
+  
+      // 设置屏幕常亮
+      wx.setKeepScreenOn({
+        keepScreenOn: true,
+      });
+  
+      this.food = new Food();
+      // 提前下载素材
+      this.food.loadAssets();
+  
+      // 此处是埋点
+      this.startInitTime = Date.now();
+      stats("loading_start");
+    } catch (error) {
+      console.log(error);
     }
-
-    this.loading = this.selectComponent("#loading");
-
-    this.loading.show();
-
-    // 此处使用会获取摄像头的权限，直到同意后才会初始化slam以免摄像头报错导致无法初始化。
-    await getCameraAuth();
-
-    this.setData({ showSlam: true });
-
-    // 设置屏幕常亮
-    wx.setKeepScreenOn({
-      keepScreenOn: true,
-    });
-
-    this.food = new Food();
-    // 提前下载素材
-    this.food.loadAssets();
-
-    // 此处是埋点
-    this.startInitTime = Date.now();
-    stats("loading_start");
   },
 
   onUnload() {

@@ -30,3 +30,5 @@
 </view>
 
 <Loading id="loading" />
+
+<private-modal></private-modal>

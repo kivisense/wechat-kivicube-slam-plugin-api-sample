@@ -143,3 +143,22 @@ export function getSlamV2Support() {
   }
   return false;
 }
+
+export function getPrivate() {
+  if (wx.requirePrivacyAuthorize) {
+    return new Promise((resolve, reject) => {
+      wx.requirePrivacyAuthorize({
+        success: (res) => {
+          console.log("用户同意了隐私协议");
+          resolve(res);
+        },
+        fail: (res) => {
+          reject(res);
+          console.log("用户拒绝了隐私协议");
+        },
+      });
+    });
+  } else {
+    return Promise.resolve();
+  }
+}

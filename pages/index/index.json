@@ -6,6 +6,7 @@
     "Loading": "../../components/loading/loading",
     "food-card": "../../components/card/card",
     "audio-player": "../../components/audio-player/audio-player",
+    "private-modal": "../../components/private-modal/private-modal",
     "video-player": "../../components/video-player/video-player"
   }
 }
