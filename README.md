@@ -1,3 +1,5 @@
+# kivicube-slam插件已不再维护，推荐使用[kivicube插件](https://mp.weixin.qq.com/wxopen/plugindevdoc?appid=wx3bbab3920eabccb2)
+
 # wechat-kivicube-slam-plugin-api-sample
 
 > 描述：此项目是基于 **[kivicube-slam](https://mp.weixin.qq.com/wxopen/plugindevdoc?appid=wx12ad8a61f049ea02&token=561137318&lang=zh_CN)** 插件 开发的示例小程序。给开发者提供了一个比较完整的示例和流程。
